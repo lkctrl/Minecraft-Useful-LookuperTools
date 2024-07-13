@@ -11,7 +11,7 @@ A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on
 
 1. Windows
 2. Visual Studio IDE
-3.I believe any c# programer using Visual Studio know how to use it
+3. I believe any c# programer using Visual Studio know how to use it
 
 ### Version control
 
