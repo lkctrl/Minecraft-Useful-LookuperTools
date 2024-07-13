@@ -5,7 +5,7 @@ A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![MPL License][license-shield]][license-url]
 
 ### Requirement
 
@@ -23,7 +23,7 @@ lkctrl@foxmail.com
 
 ### Copyright
 
-All program file follow MPL 2.0 License:  [LICENSE.txt](https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE.txt)
+All program file follow MPL 2.0 License:  [LICENSE.txt](https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE)
 
 <!-- links -->
 [your-project-path]:lkctrl/Minecraft-Player-Info-Searcher
