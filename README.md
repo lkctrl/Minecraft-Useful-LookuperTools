@@ -15,7 +15,7 @@ A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on
 
 ### Version control
 
-该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
+The project uses Git for version management. You can view currently available versions in repository.
 
 ### Author
 
@@ -34,4 +34,4 @@ All program file follow MPL 2.0 License:  [LICENSE.txt](https://github.com/lkctr
 [issues-shield]: https://img.shields.io/github/issues/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
 [issues-url]: https://img.shields.io/github/issues/lkctrl/Minecraft-Player-Info-Searcher.svg
 [license-shield]: https://img.shields.io/github/license/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
-[license-url]: https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE.txt
+[license-url]: https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE
