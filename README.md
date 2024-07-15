@@ -1,4 +1,4 @@
-# Minecraft Player Info Searcher
+# Minecraft-UsefulTools
 
 A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on MojangApi
 
