@@ -59,7 +59,7 @@ namespace PlayerInfoLookuper
             richTextBox_PlayerInfo_RawInfo.Text = UserSessionRawjson;
 
             UserSession UserSessionjson = PlayerInfoLookuper.PlayerInfoJsonParser.DeserializeSessionJson(UserSessionRawjson);
-            string UserSession_properties_valueRawjson = PlayerInfoLookuper.PlayerInfoJsonParser.DecodeBase64(UserSessionjson.properties[0].value);
+            string UserSession_properties_valueRawjson = Lookuper.DecodeBase64(UserSessionjson.properties[0].value);
             UserSession_properties_value UserSession_properties_valuejson = PlayerInfoLookuper.PlayerInfoJsonParser.DeserializeSession_valueJson(UserSession_properties_valueRawjson);
 
             PlayerSkin = Image.FromStream(WebRequest.Create(UserSession_properties_valuejson.textures.SKIN.url).GetResponse().GetResponseStream());

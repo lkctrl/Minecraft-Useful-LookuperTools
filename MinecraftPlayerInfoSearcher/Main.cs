@@ -47,6 +47,7 @@ namespace PlayerInfoLookuper
                 return "ERROR";
             }
         }
+        internal static string DecodeBase64(string rawvalue) => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(rawvalue));
         internal static void OpenBrowserUrl(string url)
         {
             try
