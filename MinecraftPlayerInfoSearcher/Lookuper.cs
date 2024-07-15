@@ -10,12 +10,16 @@ namespace PlayerInfoLookuper
 {
     public partial class LookuperUI : Form
     {
-        public const string Version = "v1.0Beta";
+        public const string Version = "v1.2Release";
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
         public LookuperUI() => InitializeComponent();
-        private void LookuperUI_Load(object sender, EventArgs e) => label_version.Text = Version;
+        private void LookuperUI_Load(object sender, EventArgs e)
+        {
+            label_version.Text = Version;
+        }
+
         private void linkLabel_op_link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => OpenBrowserUrl("https://www.minecraft.net");
         private void button_Minecraft_Search_Click(object sender, EventArgs e)
         {

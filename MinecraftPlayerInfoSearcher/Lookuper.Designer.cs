@@ -333,9 +333,9 @@
             this.label_op_designer.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_op_designer.Location = new System.Drawing.Point(13, 336);
             this.label_op_designer.Name = "label_op_designer";
-            this.label_op_designer.Size = new System.Drawing.Size(138, 17);
+            this.label_op_designer.Size = new System.Drawing.Size(126, 17);
             this.label_op_designer.TabIndex = 5;
-            this.label_op_designer.Text = "Designed by z3z in C#";
+            this.label_op_designer.Text = "Made by lkctrl in C#";
             // 
             // label_version
             // 
