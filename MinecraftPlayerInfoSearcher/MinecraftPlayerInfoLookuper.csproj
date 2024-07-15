@@ -255,8 +255,9 @@
       <DependentUpon>Lookuper.resx</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
+    <Compile Include="ServerStatusJsonParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="PlayerInfoJsonParser.cs" />
     <EmbeddedResource Include="Lookuper.resx">
       <DependentUpon>Lookuper.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -270,6 +271,7 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\PlayerInfoLookuper.LookuperUI.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

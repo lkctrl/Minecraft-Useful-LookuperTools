@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,6 +11,7 @@ namespace PlayerInfoLookuper
     {
         public const string ProfileApiLink = "https://api.mojang.com/users/profiles/minecraft/";
         public const string SessionApiLink = "https://sessionserver.mojang.com/session/minecraft/profile/";
+        public const string ServerStatusApiLink = "https://api.mcsrvstat.us/";//java+/3/<address> ,Bedrock+/bedrock/3/<address>
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -42,6 +45,22 @@ namespace PlayerInfoLookuper
             {
                 MessageBox.Show($"[WEB Error]:An error has occurred:{ex.Message}.\nCheck your network and connection to Mojang.\nTry to find out the reason yourself\nOr contact the author");
                 return "ERROR";
+            }
+        }
+        internal static void OpenBrowserUrl(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch (Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    MessageBox.Show(noBrowser.Message);
+            }
+            catch (Exception other)
+            {
+                MessageBox.Show(other.Message);
             }
         }
     }

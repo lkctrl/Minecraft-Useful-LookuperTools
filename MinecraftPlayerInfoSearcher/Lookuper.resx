@@ -120,13 +120,13 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="linkLabel_op_link.ToolTip" xml:space="preserve">
+  <data name="linkLabel_Mojang.ToolTip" xml:space="preserve">
     <value>Mojang API is an "application programming interface" provided by Mojang that allows users to retrieve player data using custom programs.
 And it is suitable for third-party launcher developers, server operators, and plugin developers.
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pictureBox_PlayerCape.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox_PlayerInfo_PlayerCape.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAIAAAAt/+nTAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAAA8NJREFUWEftl01IVFEYhm3RspXQougPIUGIIsssNCwGC1y1SAqhRbSwNmUZrcK/
@@ -148,7 +148,7 @@ And it is suitable for third-party launcher developers, server operators, and pl
         gG7zpmpJQ5CkWbv+cQCX6zeH6oF3kzj7qgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="pictureBox_PlayerSkin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pictureBox_PlayerInfo_PlayerSkin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         wwAADsMBx2+oZAAACE1JREFUeF7tmwtsFEUYxxuSJooUhBAhKAgW8CyH5ZUoYENNeamJBgxEINaGqiC1

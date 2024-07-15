@@ -1,6 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -10,7 +8,7 @@ namespace PlayerInfoLookuper
 {
     public partial class LookuperUI : Form
     {
-        public const string Version = "v1.2Release";
+        public const string Version = "x2.0base";
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
@@ -19,99 +17,96 @@ namespace PlayerInfoLookuper
         {
             label_version.Text = Version;
         }
-
-        private void linkLabel_op_link_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => OpenBrowserUrl("https://www.minecraft.net");
-        private void button_Minecraft_Search_Click(object sender, EventArgs e)
+        private void button_PlayerInfoSearch_Click(object sender, EventArgs e)
         {
-            button_Minecraft_SaveSkin.Enabled = false;
-            button_Minecraft_SaveCape.Enabled = false;
-            button_Search.Enabled = false;
-            JsonParser();
+            button_PlayerInfo_SaveSkin.Enabled = false;
+            button_PlayerInfo_SaveCape.Enabled = false;
+            button_PlayerInfo_Search.Enabled = false;
+            PlayerInfoJsonParser();
         }
-        private async void JsonParser()
+        private void button_ServerStatus_Ping_Click(object sender, EventArgs e)
+        {
+            button_ServerStatus_Ping.Enabled = false;
+            ServerStatusJsonParser();
+        }
+        private async void PlayerInfoJsonParser()
         {
 
             ChangeConnectStatus(ConnectStatus.Searching);
-            string UserProfileRawjson = await Lookuper.GetJsonData(Lookuper.ProfileApiLink, textBox_in_Name.Text);
+            string UserProfileRawjson = await Lookuper.GetJsonData(Lookuper.ProfileApiLink, textBox_PlayerInfo_in_Name.Text);
             if (UserProfileRawjson == null | UserProfileRawjson == "ERROR")
             {
-                button_Search.Enabled = true;
+                button_PlayerInfo_Search.Enabled = true;
                 ChangeConnectStatus(ConnectStatus.Error);
                 return;
             }
-            richTextBox_RawInfo.Text = UserProfileRawjson;
+            richTextBox_PlayerInfo_RawInfo.Text = UserProfileRawjson;
 
-            UserProfile UserProfilejson = Parser.DeserializeProfileJson(UserProfileRawjson);
+            UserProfile UserProfilejson = PlayerInfoLookuper.PlayerInfoJsonParser.DeserializeProfileJson(UserProfileRawjson);
             PlayerName = UserProfilejson.name;
-            label_Name.Text = UserProfilejson.name;
-            label_UUID.Text = UserProfilejson.id;
+            label_PlayerInfo_Name.Text = UserProfilejson.name;
+            label_PlayerInfo_UUID.Text = UserProfilejson.id;
 
             /*-----↑ProfileParse↑ ↓SessionParse↓-----*/
 
             string UserSessionRawjson = await Lookuper.GetJsonData(Lookuper.SessionApiLink, UserProfilejson.id);
             if (UserProfileRawjson == null | UserProfileRawjson == "ERROR")
             {
-                button_Search.Enabled = true;
+                button_PlayerInfo_Search.Enabled = true;
                 ChangeConnectStatus(ConnectStatus.Error);
                 return;
             }
-            richTextBox_RawInfo.Text = UserSessionRawjson;
+            richTextBox_PlayerInfo_RawInfo.Text = UserSessionRawjson;
 
-            UserSession UserSessionjson = Parser.DeserializeSessionJson(UserSessionRawjson);
-            string UserSession_properties_valueRawjson = Parser.DecodeBase64(UserSessionjson.properties[0].value);
-            UserSession_properties_value UserSession_properties_valuejson = Parser.DeserializeSession_valueJson(UserSession_properties_valueRawjson);
+            UserSession UserSessionjson = PlayerInfoLookuper.PlayerInfoJsonParser.DeserializeSessionJson(UserSessionRawjson);
+            string UserSession_properties_valueRawjson = PlayerInfoLookuper.PlayerInfoJsonParser.DecodeBase64(UserSessionjson.properties[0].value);
+            UserSession_properties_value UserSession_properties_valuejson = PlayerInfoLookuper.PlayerInfoJsonParser.DeserializeSession_valueJson(UserSession_properties_valueRawjson);
 
             PlayerSkin = Image.FromStream(WebRequest.Create(UserSession_properties_valuejson.textures.SKIN.url).GetResponse().GetResponseStream());
-            pictureBox_PlayerSkin.Image = PlayerSkin;
-            button_Minecraft_SaveSkin.Enabled = true;
+            pictureBox_PlayerInfo_PlayerSkin.Image = PlayerSkin;
+            button_PlayerInfo_SaveSkin.Enabled = true;
             if (UserSession_properties_valuejson.textures.CAPE != null)
             {
                 PlayerCape = Image.FromStream(WebRequest.Create(UserSession_properties_valuejson.textures.CAPE.url).GetResponse().GetResponseStream());
-                pictureBox_PlayerCape.Image = PlayerCape;
-                button_Minecraft_SaveCape.Enabled = true;
+                pictureBox_PlayerInfo_PlayerCape.Image = PlayerCape;
+                button_PlayerInfo_SaveCape.Enabled = true;
             }
             else
             {
-                pictureBox_PlayerCape.Image = MinecraftPlayerInfoSearcher.Properties.Resources._NOCAPE2015;
+                pictureBox_PlayerInfo_PlayerCape.Image = MinecraftPlayerInfoSearcher.Properties.Resources._NOCAPE2015;
             }
             ChangeConnectStatus(ConnectStatus.Waiting);
-            button_Search.Enabled = true;
+            button_PlayerInfo_Search.Enabled = true;
+        }
+        private async void ServerStatusJsonParser()
+        {
+            string AddtionIP = "/3/";
+            if (comboBox_ServerStatus_PingType.SelectedIndex == 1) AddtionIP = "/bedrock/3/";
+            ChangeConnectStatus(ConnectStatus.Searching);
+            string StatusRawjson = await Lookuper.GetJsonData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + ":" + textBox_ServerStatus_in_Port.Text);
+            ChangeConnectStatus(ConnectStatus.Waiting);
+            button_ServerStatus_Ping.Enabled = true;
         }
         private void button_SaveSkin_Click(object sender, EventArgs e)
         {
             string SkinUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Skins\\";
-            SaveImage(PlayerSkin, SkinUrl, PlayerName + ".png");
+            SaveImage(PlayerSkin, SkinUrl, PlayerName + ".png", "Skin was saved in:");
         }
         private void button_Minecraft_SaveCape_Click(object sender, EventArgs e)
         {
             string CapeUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Skins\\";
-            SaveImage(PlayerCape, CapeUrl, PlayerName + "'s Cape.png");
+            SaveImage(PlayerCape, CapeUrl, PlayerName + "'s Cape.png", "Cape was saved in:");
         }
-        private void SaveImage(Image Image, string FileUrl, string FileName)
+        private void SaveImage(Image Image, string FileUrl, string FileName, string Message)
         {
             if (!Directory.Exists(FileUrl))
             {
                 Directory.CreateDirectory(FileUrl);
             }
             Image.Save(FileUrl + FileName);
-            MessageBox.Show("Picture was saved in " + FileUrl + FileName);
+            MessageBox.Show(Message + FileUrl + FileName);
         }
-        private static void OpenBrowserUrl(string url)
-        {
-            try
-            {
-                Process.Start(url);
-            }
-            catch (Win32Exception noBrowser)
-            {
-                if (noBrowser.ErrorCode == -2147467259)
-                    MessageBox.Show(noBrowser.Message);
-            }
-            catch (Exception other)
-            {
-                MessageBox.Show(other.Message);
-            }
-        }
+
         internal void ChangeConnectStatus(ConnectStatus status)
         {
             int IntStatus = (int)status;
@@ -139,6 +134,8 @@ namespace PlayerInfoLookuper
                     return;
             }
         }
+        private void linkLabel_Mojang_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Lookuper.OpenBrowserUrl("https://www.minecraft.net");
+        private void linkLabel_Github_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Lookuper.OpenBrowserUrl("https://github.com/lkctrl/Minecraft-UsefulTools/");
     }
 }
 

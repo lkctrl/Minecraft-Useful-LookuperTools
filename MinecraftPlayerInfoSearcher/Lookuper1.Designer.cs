@@ -65,18 +65,18 @@ namespace MinecraftPlayerInfoSearcher {
         ///And it is suitable for third-party launcher developers, server operators, and plugin developers.
         /// 的本地化字符串。
         /// </summary>
-        internal static string linkLabel_op_link_ToolTip {
+        internal static string linkLabel_Mojang_ToolTip {
             get {
-                return ResourceManager.GetString("linkLabel_op_link.ToolTip", resourceCulture);
+                return ResourceManager.GetString("linkLabel_Mojang.ToolTip", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap pictureBox_PlayerCape_Image {
+        internal static System.Drawing.Bitmap pictureBox_PlayerInfo_PlayerCape_Image {
             get {
-                object obj = ResourceManager.GetObject("pictureBox_PlayerCape.Image", resourceCulture);
+                object obj = ResourceManager.GetObject("pictureBox_PlayerInfo_PlayerCape.Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -84,9 +84,9 @@ namespace MinecraftPlayerInfoSearcher {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap pictureBox_PlayerSkin_Image {
+        internal static System.Drawing.Bitmap pictureBox_PlayerInfo_PlayerSkin_Image {
             get {
-                object obj = ResourceManager.GetObject("pictureBox_PlayerSkin.Image", resourceCulture);
+                object obj = ResourceManager.GetObject("pictureBox_PlayerInfo_PlayerSkin.Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

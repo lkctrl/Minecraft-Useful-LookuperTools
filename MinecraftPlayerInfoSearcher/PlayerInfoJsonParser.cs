@@ -3,25 +3,12 @@ using System.Text.Json;
 
 namespace PlayerInfoLookuper
 {
-    internal class Parser
+    internal class PlayerInfoJsonParser
     {
-        internal static UserProfile DeserializeProfileJson(string rawjson)
-        {
-            return JsonSerializer.Deserialize<UserProfile>(rawjson);
-        }
-        internal static UserSession DeserializeSessionJson(string rawjson)
-        {
-            return JsonSerializer.Deserialize<UserSession>(rawjson);
-        }
-        internal static string DecodeBase64(string rawvalue)
-        {
-            byte[] DecodedBytes = Convert.FromBase64String(rawvalue);
-            return System.Text.Encoding.UTF8.GetString(DecodedBytes);
-        }
-        internal static UserSession_properties_value DeserializeSession_valueJson(string rawjson)
-        {
-            return JsonSerializer.Deserialize<UserSession_properties_value>(rawjson);
-        }
+        internal static UserProfile DeserializeProfileJson(string rawjson) => JsonSerializer.Deserialize<UserProfile>(rawjson);
+        internal static UserSession DeserializeSessionJson(string rawjson) => JsonSerializer.Deserialize<UserSession>(rawjson);
+        internal static string DecodeBase64(string rawvalue) => System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(rawvalue));
+        internal static UserSession_properties_value DeserializeSession_valueJson(string rawjson) => JsonSerializer.Deserialize<UserSession_properties_value>(rawjson);
     }
     public class UserProfile
     {
