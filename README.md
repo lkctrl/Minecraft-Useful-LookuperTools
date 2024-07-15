@@ -1,9 +1,7 @@
-# Minecraft Player Info Searcher
+# Minecraft-UsefulTools
 
 A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on MojangApi
 
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MPL License][license-shield]][license-url]
 
@@ -23,15 +21,13 @@ lkctrl@foxmail.com
 
 ### Copyright
 
-All program file follow MPL 2.0 License:  [LICENSE.txt](https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE)
+All program file follow MPL 2.0 License:  [LICENSE.txt](https://github.com/lkctrl/Minecraft-UsefulTools/blob/master/LICENSE)
 
 <!-- links -->
-[your-project-path]:lkctrl/Minecraft-Player-Info-Searcher
-[forks-shield]: https://img.shields.io/github/forks/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
-[forks-url]: https://github.com/lkctrl/Minecraft-Player-Info-Searcher/network/members
-[stars-shield]: https://img.shields.io/github/stars/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
-[stars-url]: https://github.com/lkctrl/Minecraft-Player-Info-Searcher/stargazers
-[issues-shield]: https://img.shields.io/github/issues/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/lkctrl/Minecraft-Player-Info-Searcher.svg
-[license-shield]: https://img.shields.io/github/license/lkctrl/Minecraft-Player-Info-Searcher.svg?style=flat-square
-[license-url]: https://github.com/lkctrl/Minecraft-Player-Info-Searcher/blob/master/LICENSE
+[your-project-path]:lkctrl/Minecraft-UsefulTools
+[stars-shield]: https://img.shields.io/github/stars/lkctrl/Minecraft-UsefulTools.svg?style=flat-square
+[stars-url]: https://github.com/lkctrl/Minecraft-UsefulTools/stargazers
+[issues-shield]: https://img.shields.io/github/issues/lkctrl/Minecraft-UsefulTools.svg?style=flat-square
+[issues-url]: https://img.shields.io/github/issues/lkctrl/Minecraft-UsefulTools.svg
+[license-shield]: https://img.shields.io/github/license/lkctrl/Minecraft-UsefulTools.svg?style=flat-square
+[license-url]: https://github.com/lkctrl/Minecraft-UsefulTools/blob/master/LICENSE
