@@ -12,14 +12,12 @@ namespace MinecraftUsefulApiTools
         internal static ServerStatus DeserializeStatusJson(string rawjson) => JsonSerializer.Deserialize<ServerStatus>(rawjson);
         internal static Image IconParser(string rawstring)
         {
+            Image img = null;
             StringBuilder builder = new StringBuilder(rawstring);
             builder.Remove(0, 22);
-            builder.Clear();
             byte[] imgdata = Convert.FromBase64String(builder.ToString());
             MemoryStream stream = new MemoryStream(imgdata);
-            Image img = Image.FromStream(stream);
-            img.Save(@"C:\Users\Administator\Pictures\ab.png");
-            MessageBox.Show("img saved");
+            img = Image.FromStream(stream);
             return img;
         }
     }
@@ -57,6 +55,12 @@ namespace MinecraftUsefulApiTools
         public int cachetime { get; set; }
         public int cacheexpire { get; set; }
         public int apiversion { get; set; }
+        public ServerStatus_debug_error error { get; set; }
+    }
+    public class ServerStatus_debug_error
+    {
+        public string ping { get; set; }
+        public string query { get; set; }
     }
     public class ServerStatus_protocol
     {

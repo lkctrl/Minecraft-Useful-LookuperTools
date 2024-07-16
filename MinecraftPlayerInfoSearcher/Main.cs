@@ -24,7 +24,6 @@ namespace MinecraftUsefulApiTools
         }
         internal static async Task<string> GetWebData(string BaseLink, string Link)
         {
-            MessageBox.Show(BaseLink + Link);
             try
             {
                 using (HttpClient client = new HttpClient())

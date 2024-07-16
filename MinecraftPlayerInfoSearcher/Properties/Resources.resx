@@ -117,14 +117,78 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name=".Old_Steve_head_shock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\.Old_Steve_head_shock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="_NOCAPE2015" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAIAAAAt/+nTAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAA8NJREFUWEftl01IVFEYhm3RspXQougPIUGIIsssNCwGC1y1SAqhRbSwNmUZrcK/
+        1CTKfnWyTKRdOZk6o44zpDZIaMEIWYZoBppifzZYm1Sm13k/r3dmHJ17b44Fvbxcv++e47nfc865R2+U
+        y+XanZG+MSUpevuWABeW35n4+WPc8x0+n5+7Ys3qBkcL09e9vUi9IYQxFT2xWQ9fOGt3OBxOJ8wAV2k2
+        rCgUCoADJ08Qg0YMP7TWSUVeb971ays3rXN1dTIdGvmIlHGwZGyfAGB3OiVZAs0AsGIwYKoUI71veSQV
+        eb3jHs+5/NxQABxLEn8ACgwgUVzXaIOtzc3SbEAzALEHTdwzhKERl5jLpCKfsAi6AVA0JmVH+iHFeChs
+        fC8JACtWGDh6aVWlVORT/4fBT1+/MNYKAIEBq0oDQJkpgwwCcNSU0OOvgU57TXWFVOTT1NTU9PQ0Yx0A
+        2DPcpRhZnuGT2+2WHrokLzEAaIwOM1YD9L0f8ExMSGIM4F2rBXW/sNyF26pLntseSw9dEgAUHeUTS2f8
+        bbhfKvJ6r5jLhkdHJdELgJ0DBs4RMBS72xulk3bJFlIAMCtKPDY2JhX53uDuNz3KIgyNjmgFwJlDAM6R
+        2g67/uNIALCmLBrVg4FxAMD6XfFd3W6mAQABkrH9tYQAOApQd0n0VhSNTQkjQPp58K1UNPuHrOPVS6ZG
+        AJQVhlA9UiOvwRwAJ8NSXVFZWsy4z1W/71jGtrTUmKTEtQnxqDgmeQ/iOFNKbEoy0g2JOxNSTbamJhls
+        MYFBDYA5IgDcYa+VTho1B8C5B0BBViZjvF7YXeiAWlfFbeZVMVI6/IOci6AAQATAs3QvggCgVs4Eph8A
+        CHAH4y4AwDv6ALjCNKYMbqp/Kp00Sl5irOzxSzk4pFE9jADG8aoGCDYBcD7KYIuJJymXV/GfAUD1NEhY
+        PeNwAMJfAQJwqbnIuGLN4UbdAM9aW7GyNdYGGs9Qx2hCh/b29ta2tnmNJk3/zJBBbaMA8tOAQChRGOJB
+        BKP0I9lnThfk3btahE27nAAtWr5X+B4TIO/WjbSMzGJzecz+vfhMkx4aFWkASNlFp3IuZhdezioswDG4
+        nAA6vhhrG21F5rL82zdLqx7gCi8VgPxv4K9Q96GFfytUE6T7s+ZvAWCrDoULIPms5G5QWcGpRLNN+KhT
+        p8YVIQB8i7Lp1+Qk7zA1LqMAAVqglU3KV7VabNKnSANI4i826dOSb6EASYOxotX6DxBGqpY0RB5ALfX9
+        gG7zpmpJQ5CkWbv+cQCX6zeH6oF3kzj7qgAAAABJRU5ErkJggg==
+</value>
   </data>
-  <data name="_NOCAPE2015" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\.NOCAPE2015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_NOSKINOld_Steve" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
   </data>
-  <data name="_NOSKINOld_Steve" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\.NOSKINOld_Steve.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_Old_Steve_head_shock" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAANxJREFUKFNj0Ffg/a8tx/tfX57/v4YM938VCY7/alJcYDEtWd7/DCAGDBurCP53
+        0hL6b68l+l9Hjg+sAaxgW2fO/719Rf+PTWv4v7e7CMgu+b+mLOq/iarQf4ZVtWn/YWBtQ+7/OUUxUN7/
+        /3Myff4zbGnJBXOCbDv/b61O/7+7swjMBgGQZoY5yW7/N1cn/d/eVPQ/y8EAjPd15PxflOX+vyHY5D/D
+        hDjn/9PiHf5bCAn9L3cyBWMrNrb//XF2/xuDLf8z5Lvq/M911gIrAGGQJAg3h1r/r/Iz/g8AjLyHRc2g
+        +r4AAAAASUVORK5CYII=
+</value>
   </data>
 </root>

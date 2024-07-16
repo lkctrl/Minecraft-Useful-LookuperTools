@@ -8,15 +8,12 @@ namespace MinecraftUsefulApiTools
 {
     public partial class LookuperUI : Form
     {
-        public const string Version = "x2.0base";
+        public const string Version = "v2.0Release";
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
         public LookuperUI() => InitializeComponent();
-        private void LookuperUI_Load(object sender, EventArgs e)
-        {
-            label_version.Text = Version;
-        }
+        private void LookuperUI_Load(object sender, EventArgs e) => label_version.Text = Version;
         private void button_PlayerInfoSearch_Click(object sender, EventArgs e)
         {
             button_PlayerInfo_SaveSkin.Enabled = false;
@@ -80,6 +77,7 @@ namespace MinecraftUsefulApiTools
         private async void ServerStatusJsonParserAsync()
         {
             ChangeConnectStatus(ConnectStatusEnum.Searching);
+            ChangeServerStatus(ServerStatusEnum.Pinging);
             string AddtionIP = "3/";
             //if (comboBox_ServerStatus_PingType.SelectedIndex == 0) AddtionIP = "/3/"; //default
             if (comboBox_ServerStatus_PingType.SelectedIndex == 1) AddtionIP = "bedrock/3/";
@@ -92,9 +90,29 @@ namespace MinecraftUsefulApiTools
             if (ServerStatus.online == true)
             {
                 ChangeServerStatus(ServerStatusEnum.Online);
-                label_ServerAddress.Text = ServerStatus.hostname;
-                toolTip.SetToolTip(label_ServerAddress, ServerStatus.ip);
-                pictureBox_ServerIcon.Image = ServerStatusJsonParser.IconParser(ServerStatus.icon);
+                label_ServerStatus_ServerAddress.Text = ServerStatus.hostname;
+                toolTip.SetToolTip(label_ServerStatus_ServerAddress, ServerStatus.ip+":"+ServerStatus.port);
+                pictureBox_ServerStatus_ServerIcon.Image = ServerStatusJsonParser.IconParser(ServerStatus.icon);
+                label_ServerStatus_PlayerNumber.Text = ServerStatus.players.online.ToString() + " / "+ ServerStatus.players.max.ToString();
+                webBrowser_ServerStatus_ServerMotd.DocumentText = "<p>"+ServerStatus.motd.html[0]+"</p>"+ "<style>p{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>";
+                //Actually these css doesn't work really. But its really a long time from i last write html files.
+                //TODO: make these html work again.
+                label_ServerStatus_ServerCore.Text = ServerStatus.software;
+                label_ServerStatus_ServerVersion.Text = ServerStatus.version;
+                button_ServerStatus_Ping.Enabled = true;
+            }
+            else
+            {
+                if(ServerStatus.debug.error.ping != "")
+                {
+                    MessageBox.Show(ServerStatus.debug.error.ping);
+                    ChangeServerStatus(ServerStatusEnum.Error);
+                    button_ServerStatus_Ping.Enabled = true;
+                    return;
+                }
+                ChangeServerStatus(ServerStatusEnum.Offline);
+                button_ServerStatus_Ping.Enabled = true;
+                return;
             }
 
             ChangeConnectStatus(ConnectStatusEnum.Waiting);
@@ -153,28 +171,28 @@ namespace MinecraftUsefulApiTools
             switch (IntStatus)
             {
                 case 1:
-                    label_status.ForeColor = Color.Green;
-                    label_status.Text = "Online";
+                    label_ServerStatus_IsServerOnline.ForeColor = Color.Green;
+                    label_ServerStatus_IsServerOnline.Text = "Online";
                     return;
                 case 2:
-                    label_status.ForeColor = Color.Gray;
-                    label_status.Text = "Offline";
+                    label_ServerStatus_IsServerOnline.ForeColor = Color.Gray;
+                    label_ServerStatus_IsServerOnline.Text = "Offline";
                     return;
                 case 3:
-                    label_status.ForeColor = Color.Red;
-                    label_status.Text = "Error";
+                    label_ServerStatus_IsServerOnline.ForeColor = Color.Red;
+                    label_ServerStatus_IsServerOnline.Text = "Error";
                     return;
                 case 4:
-                    label_status.ForeColor = SystemColors.ControlText;
-                    label_status.Text = "Waiting";
+                    label_ServerStatus_IsServerOnline.ForeColor = SystemColors.ControlText;
+                    label_ServerStatus_IsServerOnline.Text = "Waiting";
                     return;
                 case 5:
-                    label_status.ForeColor = Color.Orange;
-                    label_status.Text = "Searching";
+                    label_ServerStatus_IsServerOnline.ForeColor = Color.Orange;
+                    label_ServerStatus_IsServerOnline.Text = "Pinging";
                     return;
                 default:
-                    label_status.ForeColor = SystemColors.ControlText;
-                    label_status.Text = "Waiting";
+                    label_ServerStatus_IsServerOnline.ForeColor = SystemColors.ControlText;
+                    label_ServerStatus_IsServerOnline.Text = "Waiting";
                     return;
             }
         }
@@ -195,5 +213,5 @@ internal enum ServerStatusEnum
     Offline = 2,
     Error = 3,
     Waiting = 4,
-    Searching = 5,
+    Pinging = 5,
 }

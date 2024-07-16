@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LookuperUI));
             this.linkLabel_Mojang = new System.Windows.Forms.LinkLabel();
             this.label_Title = new System.Windows.Forms.Label();
-            this.label_op_link = new System.Windows.Forms.Label();
+            this.label_layerInfo_op_link = new System.Windows.Forms.Label();
             this.label_status = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.linkLabel_mcsrvstat = new System.Windows.Forms.LinkLabel();
@@ -55,17 +55,24 @@
             this.button_PlayerInfo_Search = new System.Windows.Forms.Button();
             this.tabControl_all = new System.Windows.Forms.TabControl();
             this.tabPage_ServerStatus = new System.Windows.Forms.TabPage();
+            this.richTextBox_ServerStatus = new System.Windows.Forms.RichTextBox();
             this.button_ServerStatus_Ping = new System.Windows.Forms.Button();
             this.textBox_ServerStatus_in_Port = new System.Windows.Forms.TextBox();
             this.comboBox_ServerStatus_PingType = new System.Windows.Forms.ComboBox();
             this.textBox_ServerStatus_in_IP = new System.Windows.Forms.TextBox();
             this.groupBox_ServerStatus = new System.Windows.Forms.GroupBox();
-            this.label_IsServerOnline = new System.Windows.Forms.Label();
-            this.label_ServerAddress = new System.Windows.Forms.Label();
-            this.label_op_ServerAddress = new System.Windows.Forms.Label();
-            this.pictureBox_ServerIcon = new System.Windows.Forms.PictureBox();
-            this.label_op_link2 = new System.Windows.Forms.Label();
-            this.richTextBox_ServerStatus = new System.Windows.Forms.RichTextBox();
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer = new System.Windows.Forms.FlowLayoutPanel();
+            this.label_ServerStatus_PlayerNumber = new System.Windows.Forms.Label();
+            this.webBrowser_ServerStatus_ServerMotd = new System.Windows.Forms.WebBrowser();
+            this.label_ServerStatus_IsServerOnline = new System.Windows.Forms.Label();
+            this.label_ServerStatus_ServerAddress = new System.Windows.Forms.Label();
+            this.label_ServerStatus_op_ServerAddress = new System.Windows.Forms.Label();
+            this.pictureBox_ServerStatus_ServerIcon = new System.Windows.Forms.PictureBox();
+            this.label_ServerStatus_op_link = new System.Windows.Forms.Label();
+            this.label_ServerStatus_op_ServerCore = new System.Windows.Forms.Label();
+            this.label_ServerStatus_ServerCore = new System.Windows.Forms.Label();
+            this.label_ServerStatus_op_ServerVersion = new System.Windows.Forms.Label();
+            this.label_ServerStatus_ServerVersion = new System.Windows.Forms.Label();
             this.tabPage_PlayerInfo.SuspendLayout();
             this.groupBox_PlayerInfo_Result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_PlayerInfo_PlayerCape)).BeginInit();
@@ -74,7 +81,8 @@
             this.tabControl_all.SuspendLayout();
             this.tabPage_ServerStatus.SuspendLayout();
             this.groupBox_ServerStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ServerIcon)).BeginInit();
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ServerStatus_ServerIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel_Mojang
@@ -102,15 +110,15 @@
             this.label_Title.Text = "Minecraft useful api tools";
             this.label_Title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label_op_link
+            // label_layerInfo_op_link
             // 
-            this.label_op_link.AutoSize = true;
-            this.label_op_link.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_op_link.Location = new System.Drawing.Point(306, 0);
-            this.label_op_link.Name = "label_op_link";
-            this.label_op_link.Size = new System.Drawing.Size(41, 17);
-            this.label_op_link.TabIndex = 3;
-            this.label_op_link.Text = "Using";
+            this.label_layerInfo_op_link.AutoSize = true;
+            this.label_layerInfo_op_link.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_layerInfo_op_link.Location = new System.Drawing.Point(306, 0);
+            this.label_layerInfo_op_link.Name = "label_layerInfo_op_link";
+            this.label_layerInfo_op_link.Size = new System.Drawing.Size(41, 17);
+            this.label_layerInfo_op_link.TabIndex = 3;
+            this.label_layerInfo_op_link.Text = "Using";
             // 
             // label_status
             // 
@@ -214,7 +222,7 @@
             this.groupBox_PlayerInfo_Result.Controls.Add(this.button_PlayerInfo_SaveCape);
             this.groupBox_PlayerInfo_Result.Controls.Add(this.pictureBox_PlayerInfo_PlayerCape);
             this.groupBox_PlayerInfo_Result.Controls.Add(this.button_PlayerInfo_SaveSkin);
-            this.groupBox_PlayerInfo_Result.Controls.Add(this.label_op_link);
+            this.groupBox_PlayerInfo_Result.Controls.Add(this.label_layerInfo_op_link);
             this.groupBox_PlayerInfo_Result.Controls.Add(this.pictureBox_PlayerInfo_PlayerHead);
             this.groupBox_PlayerInfo_Result.Controls.Add(this.pictureBox_PlayerInfo_PlayerSkin);
             this.groupBox_PlayerInfo_Result.Controls.Add(this.label_PlayerInfo_UUID);
@@ -365,6 +373,17 @@
             this.tabPage_ServerStatus.Text = "ServerStatus";
             this.tabPage_ServerStatus.UseVisualStyleBackColor = true;
             // 
+            // richTextBox_ServerStatus
+            // 
+            this.richTextBox_ServerStatus.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_ServerStatus.Location = new System.Drawing.Point(6, 63);
+            this.richTextBox_ServerStatus.Name = "richTextBox_ServerStatus";
+            this.richTextBox_ServerStatus.ReadOnly = true;
+            this.richTextBox_ServerStatus.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedHorizontal;
+            this.richTextBox_ServerStatus.Size = new System.Drawing.Size(134, 179);
+            this.richTextBox_ServerStatus.TabIndex = 14;
+            this.richTextBox_ServerStatus.Text = "";
+            // 
             // button_ServerStatus_Ping
             // 
             this.button_ServerStatus_Ping.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -402,7 +421,6 @@
             // 
             this.textBox_ServerStatus_in_IP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_ServerStatus_in_IP.Location = new System.Drawing.Point(6, 6);
-            this.textBox_ServerStatus_in_IP.MaxLength = 16;
             this.textBox_ServerStatus_in_IP.Name = "textBox_ServerStatus_in_IP";
             this.textBox_ServerStatus_in_IP.Size = new System.Drawing.Size(134, 23);
             this.textBox_ServerStatus_in_IP.TabIndex = 10;
@@ -410,12 +428,18 @@
             // 
             // groupBox_ServerStatus
             // 
-            this.groupBox_ServerStatus.Controls.Add(this.label_IsServerOnline);
-            this.groupBox_ServerStatus.Controls.Add(this.label_ServerAddress);
-            this.groupBox_ServerStatus.Controls.Add(this.label_op_ServerAddress);
-            this.groupBox_ServerStatus.Controls.Add(this.pictureBox_ServerIcon);
-            this.groupBox_ServerStatus.Controls.Add(this.label_op_link2);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_ServerVersion);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_op_ServerVersion);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_ServerCore);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_op_ServerCore);
+            this.groupBox_ServerStatus.Controls.Add(this.flowLayoutPanel_ServerStatus_OnlinePlayer);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_IsServerOnline);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_ServerAddress);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_op_ServerAddress);
+            this.groupBox_ServerStatus.Controls.Add(this.pictureBox_ServerStatus_ServerIcon);
+            this.groupBox_ServerStatus.Controls.Add(this.label_ServerStatus_op_link);
             this.groupBox_ServerStatus.Controls.Add(this.linkLabel_mcsrvstat);
+            this.groupBox_ServerStatus.Controls.Add(this.webBrowser_ServerStatus_ServerMotd);
             this.groupBox_ServerStatus.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox_ServerStatus.Location = new System.Drawing.Point(146, 6);
             this.groupBox_ServerStatus.Name = "groupBox_ServerStatus";
@@ -424,65 +448,125 @@
             this.groupBox_ServerStatus.TabStop = false;
             this.groupBox_ServerStatus.Text = "Result:";
             // 
-            // label_IsServerOnline
+            // flowLayoutPanel_ServerStatus_OnlinePlayer
             // 
-            this.label_IsServerOnline.AutoSize = true;
-            this.label_IsServerOnline.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_IsServerOnline.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_IsServerOnline.Location = new System.Drawing.Point(78, 22);
-            this.label_IsServerOnline.Name = "label_IsServerOnline";
-            this.label_IsServerOnline.Size = new System.Drawing.Size(52, 17);
-            this.label_IsServerOnline.TabIndex = 9;
-            this.label_IsServerOnline.Text = "Waiting";
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.Controls.Add(this.label_ServerStatus_PlayerNumber);
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.Location = new System.Drawing.Point(0, 94);
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.Name = "flowLayoutPanel_ServerStatus_OnlinePlayer";
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.Size = new System.Drawing.Size(124, 17);
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.TabIndex = 14;
             // 
-            // label_ServerAddress
+            // label_ServerStatus_PlayerNumber
             // 
-            this.label_ServerAddress.AutoSize = true;
-            this.label_ServerAddress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ServerAddress.Location = new System.Drawing.Point(164, 22);
-            this.label_ServerAddress.Name = "label_ServerAddress";
-            this.label_ServerAddress.Size = new System.Drawing.Size(14, 17);
-            this.label_ServerAddress.TabIndex = 8;
-            this.label_ServerAddress.Text = "x";
+            this.label_ServerStatus_PlayerNumber.AutoSize = true;
+            this.label_ServerStatus_PlayerNumber.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_PlayerNumber.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_ServerStatus_PlayerNumber.Location = new System.Drawing.Point(3, 0);
+            this.label_ServerStatus_PlayerNumber.Name = "label_ServerStatus_PlayerNumber";
+            this.label_ServerStatus_PlayerNumber.Size = new System.Drawing.Size(35, 17);
+            this.label_ServerStatus_PlayerNumber.TabIndex = 12;
+            this.label_ServerStatus_PlayerNumber.Text = "0 / 0";
             // 
-            // label_op_ServerAddress
+            // webBrowser_ServerStatus_ServerMotd
             // 
-            this.label_op_ServerAddress.AutoSize = true;
-            this.label_op_ServerAddress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_op_ServerAddress.Location = new System.Drawing.Point(136, 22);
-            this.label_op_ServerAddress.Name = "label_op_ServerAddress";
-            this.label_op_ServerAddress.Size = new System.Drawing.Size(22, 17);
-            this.label_op_ServerAddress.TabIndex = 7;
-            this.label_op_ServerAddress.Text = "IP:";
+            this.webBrowser_ServerStatus_ServerMotd.IsWebBrowserContextMenuEnabled = false;
+            this.webBrowser_ServerStatus_ServerMotd.Location = new System.Drawing.Point(69, 22);
+            this.webBrowser_ServerStatus_ServerMotd.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser_ServerStatus_ServerMotd.Name = "webBrowser_ServerStatus_ServerMotd";
+            this.webBrowser_ServerStatus_ServerMotd.ScrollBarsEnabled = false;
+            this.webBrowser_ServerStatus_ServerMotd.Size = new System.Drawing.Size(354, 66);
+            this.webBrowser_ServerStatus_ServerMotd.TabIndex = 10;
+            this.webBrowser_ServerStatus_ServerMotd.WebBrowserShortcutsEnabled = false;
             // 
-            // pictureBox_ServerIcon
+            // label_ServerStatus_IsServerOnline
             // 
-            this.pictureBox_ServerIcon.Location = new System.Drawing.Point(6, 22);
-            this.pictureBox_ServerIcon.Name = "pictureBox_ServerIcon";
-            this.pictureBox_ServerIcon.Size = new System.Drawing.Size(66, 66);
-            this.pictureBox_ServerIcon.TabIndex = 6;
-            this.pictureBox_ServerIcon.TabStop = false;
+            this.label_ServerStatus_IsServerOnline.AutoSize = true;
+            this.label_ServerStatus_IsServerOnline.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_IsServerOnline.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_ServerStatus_IsServerOnline.Location = new System.Drawing.Point(78, 22);
+            this.label_ServerStatus_IsServerOnline.Name = "label_ServerStatus_IsServerOnline";
+            this.label_ServerStatus_IsServerOnline.Size = new System.Drawing.Size(52, 17);
+            this.label_ServerStatus_IsServerOnline.TabIndex = 9;
+            this.label_ServerStatus_IsServerOnline.Text = "Waiting";
             // 
-            // label_op_link2
+            // label_ServerStatus_ServerAddress
             // 
-            this.label_op_link2.AutoSize = true;
-            this.label_op_link2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_op_link2.Location = new System.Drawing.Point(293, 0);
-            this.label_op_link2.Name = "label_op_link2";
-            this.label_op_link2.Size = new System.Drawing.Size(41, 17);
-            this.label_op_link2.TabIndex = 5;
-            this.label_op_link2.Text = "Using";
+            this.label_ServerStatus_ServerAddress.AutoSize = true;
+            this.label_ServerStatus_ServerAddress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_ServerAddress.Location = new System.Drawing.Point(164, 22);
+            this.label_ServerStatus_ServerAddress.Name = "label_ServerStatus_ServerAddress";
+            this.label_ServerStatus_ServerAddress.Size = new System.Drawing.Size(14, 17);
+            this.label_ServerStatus_ServerAddress.TabIndex = 8;
+            this.label_ServerStatus_ServerAddress.Text = "x";
             // 
-            // richTextBox_ServerStatus
+            // label_ServerStatus_op_ServerAddress
             // 
-            this.richTextBox_ServerStatus.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox_ServerStatus.Location = new System.Drawing.Point(6, 63);
-            this.richTextBox_ServerStatus.Name = "richTextBox_ServerStatus";
-            this.richTextBox_ServerStatus.ReadOnly = true;
-            this.richTextBox_ServerStatus.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedHorizontal;
-            this.richTextBox_ServerStatus.Size = new System.Drawing.Size(134, 179);
-            this.richTextBox_ServerStatus.TabIndex = 14;
-            this.richTextBox_ServerStatus.Text = "";
+            this.label_ServerStatus_op_ServerAddress.AutoSize = true;
+            this.label_ServerStatus_op_ServerAddress.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_op_ServerAddress.Location = new System.Drawing.Point(136, 22);
+            this.label_ServerStatus_op_ServerAddress.Name = "label_ServerStatus_op_ServerAddress";
+            this.label_ServerStatus_op_ServerAddress.Size = new System.Drawing.Size(22, 17);
+            this.label_ServerStatus_op_ServerAddress.TabIndex = 7;
+            this.label_ServerStatus_op_ServerAddress.Text = "IP:";
+            // 
+            // pictureBox_ServerStatus_ServerIcon
+            // 
+            this.pictureBox_ServerStatus_ServerIcon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox_ServerStatus_ServerIcon.Location = new System.Drawing.Point(6, 22);
+            this.pictureBox_ServerStatus_ServerIcon.Name = "pictureBox_ServerStatus_ServerIcon";
+            this.pictureBox_ServerStatus_ServerIcon.Size = new System.Drawing.Size(66, 66);
+            this.pictureBox_ServerStatus_ServerIcon.TabIndex = 6;
+            this.pictureBox_ServerStatus_ServerIcon.TabStop = false;
+            // 
+            // label_ServerStatus_op_link
+            // 
+            this.label_ServerStatus_op_link.AutoSize = true;
+            this.label_ServerStatus_op_link.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_op_link.Location = new System.Drawing.Point(293, 0);
+            this.label_ServerStatus_op_link.Name = "label_ServerStatus_op_link";
+            this.label_ServerStatus_op_link.Size = new System.Drawing.Size(41, 17);
+            this.label_ServerStatus_op_link.TabIndex = 5;
+            this.label_ServerStatus_op_link.Text = "Using";
+            // 
+            // label_ServerStatus_op_ServerCore
+            // 
+            this.label_ServerStatus_op_ServerCore.AutoSize = true;
+            this.label_ServerStatus_op_ServerCore.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_op_ServerCore.Location = new System.Drawing.Point(7, 114);
+            this.label_ServerStatus_op_ServerCore.Name = "label_ServerStatus_op_ServerCore";
+            this.label_ServerStatus_op_ServerCore.Size = new System.Drawing.Size(39, 17);
+            this.label_ServerStatus_op_ServerCore.TabIndex = 15;
+            this.label_ServerStatus_op_ServerCore.Text = "Core:";
+            // 
+            // label_ServerStatus_ServerCore
+            // 
+            this.label_ServerStatus_ServerCore.AutoSize = true;
+            this.label_ServerStatus_ServerCore.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_ServerCore.Location = new System.Drawing.Point(52, 114);
+            this.label_ServerStatus_ServerCore.Name = "label_ServerStatus_ServerCore";
+            this.label_ServerStatus_ServerCore.Size = new System.Drawing.Size(14, 17);
+            this.label_ServerStatus_ServerCore.TabIndex = 16;
+            this.label_ServerStatus_ServerCore.Text = "x";
+            // 
+            // label_ServerStatus_op_ServerVersion
+            // 
+            this.label_ServerStatus_op_ServerVersion.AutoSize = true;
+            this.label_ServerStatus_op_ServerVersion.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_op_ServerVersion.Location = new System.Drawing.Point(7, 131);
+            this.label_ServerStatus_op_ServerVersion.Name = "label_ServerStatus_op_ServerVersion";
+            this.label_ServerStatus_op_ServerVersion.Size = new System.Drawing.Size(55, 17);
+            this.label_ServerStatus_op_ServerVersion.TabIndex = 17;
+            this.label_ServerStatus_op_ServerVersion.Text = "Version:";
+            // 
+            // label_ServerStatus_ServerVersion
+            // 
+            this.label_ServerStatus_ServerVersion.AutoSize = true;
+            this.label_ServerStatus_ServerVersion.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ServerStatus_ServerVersion.Location = new System.Drawing.Point(68, 131);
+            this.label_ServerStatus_ServerVersion.Name = "label_ServerStatus_ServerVersion";
+            this.label_ServerStatus_ServerVersion.Size = new System.Drawing.Size(14, 17);
+            this.label_ServerStatus_ServerVersion.TabIndex = 18;
+            this.label_ServerStatus_ServerVersion.Text = "x";
             // 
             // LookuperUI
             // 
@@ -511,7 +595,9 @@
             this.tabPage_ServerStatus.PerformLayout();
             this.groupBox_ServerStatus.ResumeLayout(false);
             this.groupBox_ServerStatus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ServerIcon)).EndInit();
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.ResumeLayout(false);
+            this.flowLayoutPanel_ServerStatus_OnlinePlayer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ServerStatus_ServerIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -520,7 +606,7 @@
         #endregion
         private System.Windows.Forms.LinkLabel linkLabel_Mojang;
         private System.Windows.Forms.Label label_Title;
-        private System.Windows.Forms.Label label_op_link;
+        private System.Windows.Forms.Label label_layerInfo_op_link;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label label_op_designer;
         private System.Windows.Forms.Label label_version;
@@ -546,14 +632,21 @@
         internal System.Windows.Forms.TextBox textBox_ServerStatus_in_IP;
         private System.Windows.Forms.GroupBox groupBox_ServerStatus;
         private System.Windows.Forms.ComboBox comboBox_ServerStatus_PingType;
-        private System.Windows.Forms.Label label_op_link2;
+        private System.Windows.Forms.Label label_ServerStatus_op_link;
         private System.Windows.Forms.LinkLabel linkLabel_mcsrvstat;
         private System.Windows.Forms.LinkLabel linkLabel_Github;
-        private System.Windows.Forms.PictureBox pictureBox_ServerIcon;
-        private System.Windows.Forms.Label label_op_ServerAddress;
-        private System.Windows.Forms.Label label_ServerAddress;
-        private System.Windows.Forms.Label label_IsServerOnline;
+        private System.Windows.Forms.PictureBox pictureBox_ServerStatus_ServerIcon;
+        private System.Windows.Forms.Label label_ServerStatus_op_ServerAddress;
+        private System.Windows.Forms.Label label_ServerStatus_ServerAddress;
+        private System.Windows.Forms.Label label_ServerStatus_IsServerOnline;
         private System.Windows.Forms.RichTextBox richTextBox_ServerStatus;
+        private System.Windows.Forms.WebBrowser webBrowser_ServerStatus_ServerMotd;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_ServerStatus_OnlinePlayer;
+        private System.Windows.Forms.Label label_ServerStatus_PlayerNumber;
+        private System.Windows.Forms.Label label_ServerStatus_ServerCore;
+        private System.Windows.Forms.Label label_ServerStatus_op_ServerCore;
+        private System.Windows.Forms.Label label_ServerStatus_ServerVersion;
+        private System.Windows.Forms.Label label_ServerStatus_op_ServerVersion;
     }
 }
 

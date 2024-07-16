@@ -85,7 +85,7 @@ namespace MinecraftPlayerInfoSearcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _Old_Steve_head_shock {
             get {
-                object obj = ResourceManager.GetObject(".Old_Steve_head_shock", resourceCulture);
+                object obj = ResourceManager.GetObject("_Old_Steve_head_shock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
