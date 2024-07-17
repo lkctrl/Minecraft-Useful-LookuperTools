@@ -594,7 +594,7 @@
             this.Controls.Add(this.label_Title);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LookuperUI";
-            this.Text = "Minecraft Player Info Lookuper";
+            this.Text = "Minecraft useful apiTools";
             this.Load += new System.EventHandler(this.LookuperUI_Load);
             this.tabPage_PlayerInfo.ResumeLayout(false);
             this.tabPage_PlayerInfo.PerformLayout();
