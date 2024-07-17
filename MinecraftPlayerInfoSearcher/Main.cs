@@ -44,7 +44,7 @@ namespace MinecraftUsefulApiTools
             catch (Exception ex)
             {
                 MessageBox.Show($"[WEB Error]:An error has occurred:\n{ex.Message}.\nErrorInfo:\n{ex.StackTrace}\nPossible resolution:\nCheck your network and connection to Api.\nTry to find out the reason yourself\nOr contact the author");
-                return "ERROR";
+                throw new Exception();
             }
         }
         internal static void OpenBrowserUrl(string url)

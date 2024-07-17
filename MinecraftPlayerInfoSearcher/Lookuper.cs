@@ -84,7 +84,17 @@ namespace MinecraftUsefulApiTools
             if (comboBox_ServerStatus_PingType.SelectedIndex == 1) AddtionIP = "bedrock/3/";
             string AddtionPort = null;
             if (textBox_ServerStatus_in_Port.Text != "") AddtionPort = ":" + textBox_ServerStatus_in_Port.Text;
-            string StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + AddtionPort);
+            string StatusRawjson;
+            try
+            {
+                StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + AddtionPort);
+            }
+            catch
+            {
+                ChangeConnectStatus(ConnectStatusEnum.Error);
+                return;
+            }
+
             richTextBox_ServerStatus.Text = StatusRawjson;
 
             ServerStatus ServerStatus = ServerStatusJsonParser.DeserializeStatusJson(StatusRawjson);
