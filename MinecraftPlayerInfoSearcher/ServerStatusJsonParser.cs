@@ -12,13 +12,11 @@ namespace MinecraftUsefulApiTools
         internal static ServerStatus DeserializeStatusJson(string rawjson) => JsonSerializer.Deserialize<ServerStatus>(rawjson);
         internal static Image IconParser(string rawstring)
         {
-            Image img = null;
             StringBuilder builder = new StringBuilder(rawstring);
-            builder.Remove(0, 22);
+            builder.Remove(0, 22);//remove "data:image\/png;base64,"
             byte[] imgdata = Convert.FromBase64String(builder.ToString());
             MemoryStream stream = new MemoryStream(imgdata);
-            img = Image.FromStream(stream);
-            return img;
+            return Image.FromStream(stream);
         }
     }
     public class ServerStatus

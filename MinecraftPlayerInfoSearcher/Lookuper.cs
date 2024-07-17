@@ -12,6 +12,7 @@ namespace MinecraftUsefulApiTools
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
+        public Image ServerIcon;
         public LookuperUI() => InitializeComponent();
         private void LookuperUI_Load(object sender, EventArgs e) => label_version.Text = Version;
         private void button_PlayerInfoSearch_Click(object sender, EventArgs e)
@@ -79,11 +80,11 @@ namespace MinecraftUsefulApiTools
             ChangeConnectStatus(ConnectStatusEnum.Searching);
             ChangeServerStatus(ServerStatusEnum.Pinging);
             string AddtionIP = "3/";
-            //if (comboBox_ServerStatus_PingType.SelectedIndex == 0) AddtionIP = "/3/"; //default
+            //if (comboBox_ServerStatus_PingType.SelectedIndex == 0) AddtionIP = "3/"; //default
             if (comboBox_ServerStatus_PingType.SelectedIndex == 1) AddtionIP = "bedrock/3/";
-            string PortText = null;
-            if (textBox_ServerStatus_in_Port.Text != "") PortText = ":" + textBox_ServerStatus_in_Port.Text;
-            string StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + PortText);
+            string AddtionPort = null;
+            if (textBox_ServerStatus_in_Port.Text != "") AddtionPort = ":" + textBox_ServerStatus_in_Port.Text;
+            string StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + AddtionPort);
             richTextBox_ServerStatus.Text = StatusRawjson;
 
             ServerStatus ServerStatus = ServerStatusJsonParser.DeserializeStatusJson(StatusRawjson);
@@ -91,11 +92,12 @@ namespace MinecraftUsefulApiTools
             {
                 ChangeServerStatus(ServerStatusEnum.Online);
                 label_ServerStatus_ServerAddress.Text = ServerStatus.hostname;
-                toolTip.SetToolTip(label_ServerStatus_ServerAddress, ServerStatus.ip+":"+ServerStatus.port);
-                pictureBox_ServerStatus_ServerIcon.Image = ServerStatusJsonParser.IconParser(ServerStatus.icon);
-                label_ServerStatus_PlayerNumber.Text = ServerStatus.players.online.ToString() + " / "+ ServerStatus.players.max.ToString();
-                webBrowser_ServerStatus_ServerMotd.DocumentText = "<p>"+ServerStatus.motd.html[0]+"</p>"+ "<style>p{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>";
-                //Actually these css doesn't work really. But its really a long time from i last write html files.
+                toolTip.SetToolTip(label_ServerStatus_ServerAddress, ServerStatus.ip + ":" + ServerStatus.port);
+                ServerIcon = ServerStatusJsonParser.IconParser(ServerStatus.icon);
+                pictureBox_ServerStatus_ServerIcon.Image = ServerIcon;
+                label_ServerStatus_PlayerNumber.Text = ServerStatus.players.online.ToString() + " / " + ServerStatus.players.max.ToString();
+                webBrowser_ServerStatus_ServerMotd.DocumentText = "<p>" + ServerStatus.motd.html[0] + "<br>" + ServerStatus.motd.html[1] + "</p>" + "<style>p{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>";
+                //Actually these css doesn't work really. But its really a long time from i last write html5.
                 //TODO: make these html work again.
                 label_ServerStatus_ServerCore.Text = ServerStatus.software;
                 label_ServerStatus_ServerVersion.Text = ServerStatus.version;
@@ -103,7 +105,7 @@ namespace MinecraftUsefulApiTools
             }
             else
             {
-                if(ServerStatus.debug.error.ping != "")
+                if (ServerStatus.debug.error.ping != "")
                 {
                     MessageBox.Show(ServerStatus.debug.error.ping);
                     ChangeServerStatus(ServerStatusEnum.Error);
@@ -120,13 +122,18 @@ namespace MinecraftUsefulApiTools
         }
         private void button_SaveSkin_Click(object sender, EventArgs e)
         {
-            string SkinUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Skins\\";
+            string SkinUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Useful Tools\\";
             SaveImage(PlayerSkin, SkinUrl, PlayerName + ".png", "Skin was saved in:");
         }
         private void button_Minecraft_SaveCape_Click(object sender, EventArgs e)
         {
-            string CapeUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Skins\\";
+            string CapeUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Useful Tools\\";
             SaveImage(PlayerCape, CapeUrl, PlayerName + "'s Cape.png", "Cape was saved in:");
+        }
+        private void button_ServerStatus_SaveServerIcon_Click(object sender, EventArgs e)
+        {
+            string IconUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Useful Tools\\Server Icons\\";
+            SaveImage(ServerIcon, IconUrl, label_ServerStatus_ServerAddress.Text + ".png", "Icon was saved in:");
         }
         private void SaveImage(Image Image, string FileUrl, string FileName, string Message)
         {
@@ -137,7 +144,6 @@ namespace MinecraftUsefulApiTools
             Image.Save(FileUrl + FileName);
             MessageBox.Show(Message + FileUrl + FileName);
         }
-
         internal void ChangeConnectStatus(ConnectStatusEnum status)
         {
             int IntStatus = (int)status;
