@@ -8,7 +8,7 @@ namespace MinecraftUsefulApiTools
 {
     public partial class LookuperUI : Form
     {
-        public const string Version = "v2.0Release";
+        public const string Version = "v2.0.2Release";
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
