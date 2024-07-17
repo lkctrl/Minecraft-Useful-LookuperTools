@@ -102,6 +102,7 @@ namespace MinecraftUsefulApiTools
                 label_ServerStatus_ServerCore.Text = ServerStatus.software;
                 label_ServerStatus_ServerVersion.Text = ServerStatus.version;
                 button_ServerStatus_Ping.Enabled = true;
+                button_ServerStatus_SaveServerIcon.Enabled = true;
             }
             else
             {
@@ -116,8 +117,9 @@ namespace MinecraftUsefulApiTools
                 button_ServerStatus_Ping.Enabled = true;
                 return;
             }
-
+            //won't happened
             ChangeConnectStatus(ConnectStatusEnum.Waiting);
+            button_ServerStatus_SaveServerIcon.Enabled = true;
             button_ServerStatus_Ping.Enabled = true;
         }
         private void button_SaveSkin_Click(object sender, EventArgs e)

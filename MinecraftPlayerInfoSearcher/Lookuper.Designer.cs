@@ -453,6 +453,7 @@
             // 
             // button_ServerStatus_SaveServerIcon
             // 
+            this.button_ServerStatus_SaveServerIcon.Enabled = false;
             this.button_ServerStatus_SaveServerIcon.Location = new System.Drawing.Point(6, 206);
             this.button_ServerStatus_SaveServerIcon.Name = "button_ServerStatus_SaveServerIcon";
             this.button_ServerStatus_SaveServerIcon.Size = new System.Drawing.Size(75, 25);
