@@ -37,7 +37,7 @@ namespace MinecraftUsefulApiTools
         private async void PlayerInfoJsonParserAsync()
         {
             #region ProfileParse
-            string UserProfileRawjson = null;
+            string UserProfileRawjson;
             ChangeConnectStatus(ConnectStatusEnum.Searching);
             try
             {
