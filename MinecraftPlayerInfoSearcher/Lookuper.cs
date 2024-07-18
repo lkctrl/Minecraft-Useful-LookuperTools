@@ -8,7 +8,7 @@ namespace MinecraftUsefulApiTools
 {
     public partial class LookuperUI : Form
     {
-        public const string Version = "v2.0.2Release";
+        public const string Version = "v2.0.4R";
         public string PlayerName;
         public Image PlayerSkin;
         public Image PlayerCape;
@@ -25,13 +25,31 @@ namespace MinecraftUsefulApiTools
         private void button_ServerStatus_Ping_Click(object sender, EventArgs e)
         {
             button_ServerStatus_Ping.Enabled = false;
-            ServerStatusJsonParserAsync();
+            if (comboBox_ServerStatus_PingType.SelectedIndex == 1)
+            {
+                ServerStatusJsonParserAsync(textBox_ServerStatus_in_IP.Text, textBox_ServerStatus_in_Port.Text, "bedrock/3/");//type=1:java type=2:bedrock
+                return;
+            }
+            ServerStatusJsonParserAsync(textBox_ServerStatus_in_IP.Text, textBox_ServerStatus_in_Port.Text, "3/");//default
+            return;
         }
+        #region Some SHIT Codes
         private async void PlayerInfoJsonParserAsync()
         {
+            #region ProfileParse
+            string UserProfileRawjson = null;
             ChangeConnectStatus(ConnectStatusEnum.Searching);
-            string UserProfileRawjson = await Lookuper.GetWebData(Lookuper.ProfileApiLink, textBox_PlayerInfo_in_Name.Text);
-            if (UserProfileRawjson == null | UserProfileRawjson == "ERROR")
+            try
+            {
+                UserProfileRawjson = await Lookuper.GetWebData(Lookuper.ProfileApiLink, textBox_PlayerInfo_in_Name.Text);
+            }
+            catch
+            {
+                button_PlayerInfo_Search.Enabled = true;
+                ChangeConnectStatus(ConnectStatusEnum.Error);
+                return;
+            }
+            if (UserProfileRawjson == null)
             {
                 button_PlayerInfo_Search.Enabled = true;
                 ChangeConnectStatus(ConnectStatusEnum.Error);
@@ -43,11 +61,10 @@ namespace MinecraftUsefulApiTools
             PlayerName = UserProfilejson.name;
             label_PlayerInfo_Name.Text = UserProfilejson.name;
             label_PlayerInfo_UUID.Text = UserProfilejson.id;
-
-            /*-----↑ProfileParse↑ ↓SessionParse↓-----*/
-
+            #endregion
+            #region SessionParse
             string UserSessionRawjson = await Lookuper.GetWebData(Lookuper.SessionApiLink, UserProfilejson.id);
-            if (UserProfileRawjson == null | UserProfileRawjson == "ERROR")
+            if (UserProfileRawjson == null)
             {
                 button_PlayerInfo_Search.Enabled = true;
                 ChangeConnectStatus(ConnectStatusEnum.Error);
@@ -74,43 +91,47 @@ namespace MinecraftUsefulApiTools
             }
             ChangeConnectStatus(ConnectStatusEnum.Waiting);
             button_PlayerInfo_Search.Enabled = true;
+            #endregion
         }
-        private async void ServerStatusJsonParserAsync()
+        private async void ServerStatusJsonParserAsync(string ServerIP, string port, string AddtionUrl)
         {
             ChangeConnectStatus(ConnectStatusEnum.Searching);
             ChangeServerStatus(ServerStatusEnum.Pinging);
-            string AddtionIP = "3/";
-            //if (comboBox_ServerStatus_PingType.SelectedIndex == 0) AddtionIP = "3/"; //default
-            if (comboBox_ServerStatus_PingType.SelectedIndex == 1) AddtionIP = "bedrock/3/";
             string AddtionPort = null;
-            if (textBox_ServerStatus_in_Port.Text != "") AddtionPort = ":" + textBox_ServerStatus_in_Port.Text;
+            if (port != "") AddtionPort = ":" + port;
             string StatusRawjson;
             try
             {
-                StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionIP, textBox_ServerStatus_in_IP.Text + AddtionPort);
+                StatusRawjson = await Lookuper.GetWebData(Lookuper.ServerStatusApiLink + AddtionUrl, ServerIP + AddtionPort);
             }
-            catch
+            catch (Exception ex)
             {
                 ChangeConnectStatus(ConnectStatusEnum.Error);
+                button_ServerStatus_Ping.Enabled = true;
+                richTextBox_ServerStatus.Text = ex.Message;
+                //throw new Exception(ex.Message);
                 return;
             }
-
             richTextBox_ServerStatus.Text = StatusRawjson;
-
             ServerStatus ServerStatus = ServerStatusJsonParser.DeserializeStatusJson(StatusRawjson);
             if (ServerStatus.online == true)
             {
                 ChangeServerStatus(ServerStatusEnum.Online);
                 label_ServerStatus_ServerAddress.Text = ServerStatus.hostname;
                 toolTip.SetToolTip(label_ServerStatus_ServerAddress, ServerStatus.ip + ":" + ServerStatus.port);
-                ServerIcon = ServerStatusJsonParser.IconParser(ServerStatus.icon);
-                pictureBox_ServerStatus_ServerIcon.Image = ServerIcon;
                 label_ServerStatus_PlayerNumber.Text = ServerStatus.players.online.ToString() + " / " + ServerStatus.players.max.ToString();
-                webBrowser_ServerStatus_ServerMotd.DocumentText = "<p>" + ServerStatus.motd.html[0] + "<br>" + ServerStatus.motd.html[1] + "</p>" + "<style>p{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>";
-                //Actually these css doesn't work really. But its really a long time from i last write html5.
+                webBrowser_ServerStatus_ServerMotd.DocumentText = AddtionUrl == "3/" //Is it java?(i know its stupid but it works)
+                    ? "<div>" + ServerStatus.motd.html[0] + ServerStatus.motd.html[1] + "</div>" + "<style>div{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>" //is java.
+                    : "<div>" + ServerStatus.motd.html[0] + "</div>" + "<style>div{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>"; //is not java(is Bedrock).
+                //Actually these CSS doesn't work really. But its really a long time from i last write html5.
                 //TODO: make these html work again.
                 label_ServerStatus_ServerCore.Text = ServerStatus.software;
                 label_ServerStatus_ServerVersion.Text = ServerStatus.version;
+                if (ServerStatus.icon != null)
+                {
+                    ServerIcon = ServerStatusJsonParser.IconParser(ServerStatus.icon);
+                    pictureBox_ServerStatus_ServerIcon.Image = ServerIcon;
+                }
                 button_ServerStatus_Ping.Enabled = true;
                 button_ServerStatus_SaveServerIcon.Enabled = true;
             }
@@ -118,8 +139,8 @@ namespace MinecraftUsefulApiTools
             {
                 if (ServerStatus.debug.error.ping != "")
                 {
-                    MessageBox.Show(ServerStatus.debug.error.ping);
                     ChangeServerStatus(ServerStatusEnum.Error);
+                    MessageBox.Show(ServerStatus.debug.error.ping);
                     button_ServerStatus_Ping.Enabled = true;
                     return;
                 }
@@ -127,11 +148,8 @@ namespace MinecraftUsefulApiTools
                 button_ServerStatus_Ping.Enabled = true;
                 return;
             }
-            //won't happened
-            ChangeConnectStatus(ConnectStatusEnum.Waiting);
-            button_ServerStatus_SaveServerIcon.Enabled = true;
-            button_ServerStatus_Ping.Enabled = true;
         }
+        #endregion SHIT
         private void button_SaveSkin_Click(object sender, EventArgs e)
         {
             string SkinUrl = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\Minecraft Useful Tools\\";

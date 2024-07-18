@@ -33,11 +33,11 @@ namespace MinecraftUsefulApiTools
         public string gamemode { get; set; }
         public string serverid { get; set; }
         public bool eula_blocked { get; set; }
-        public ServerStatus_RCH motd { get; set; }
+        public ServerStatus_RCHArray motd { get; set; }
         public ServerStatus_players players { get; set; }
         public ServerStatus_plugins[] plugins { get; set; }
         public ServerStatus_plugins[] mods { get; set; }
-        public ServerStatus_RCH info { get; set; }
+        public ServerStatus_RCHArray info { get; set; }
     }
     public class ServerStatus_debug
     {
@@ -64,11 +64,17 @@ namespace MinecraftUsefulApiTools
         public ushort version { get; set; }
         public string name { get; set; }
     }
-    public class ServerStatus_RCH
+    public class ServerStatus_RCHArray
     {
         public string[] raw { get; set; }
         public string[] clean { get; set; }
         public string[] html { get; set; }
+    }
+    public class ServerStatus_RCH
+    {
+        public string raw { get; set; }
+        public string clean { get; set; }
+        public string html { get; set; }
     }
     public class ServerStatus_players
     {

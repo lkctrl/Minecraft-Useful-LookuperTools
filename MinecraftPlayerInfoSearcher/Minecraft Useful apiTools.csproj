@@ -255,6 +255,7 @@
       <DependentUpon>Lookuper.resx</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
+    <Compile Include="PlayerInfoJsonParser.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,7 +263,6 @@
     </Compile>
     <Compile Include="ServerStatusJsonParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PlayerInfoJsonParser.cs" />
     <EmbeddedResource Include="Lookuper.resx">
       <DependentUpon>Lookuper.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,7 +29,7 @@ namespace MinecraftUsefulApiTools
                 using (HttpClient client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(BaseLink);
-                    HttpResponseMessage response = await client.GetAsync(Link);
+                    HttpResponseMessage response = await client.GetAsync(Uri.EscapeDataString(Link));
                     if (response.IsSuccessStatusCode)
                     {
                         return await response.Content.ReadAsStringAsync();
@@ -43,7 +43,7 @@ namespace MinecraftUsefulApiTools
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"[WEB Error]:An error has occurred:\n{ex.Message}.\nErrorInfo:\n{ex.StackTrace}\nPossible resolution:\nCheck your network and connection to Api.\nTry to find out the reason yourself\nOr contact the author");
+                MessageBox.Show($"[WEBGet Error]:An error has occurred:\n{ex.Message}.\nErrorInfo:\n{ex.StackTrace}\nPossible resolution:\nCheck your network and connection to Api.\nTry to find out the reason yourself\nOr contact the author");
                 throw new Exception();
             }
         }
