@@ -120,10 +120,9 @@ namespace MinecraftUsefulApiTools
                 label_ServerStatus_ServerAddress.Text = ServerStatus.hostname;
                 toolTip.SetToolTip(label_ServerStatus_ServerAddress, ServerStatus.ip + ":" + ServerStatus.port);
                 label_ServerStatus_PlayerNumber.Text = ServerStatus.players.online.ToString() + " / " + ServerStatus.players.max.ToString();
-                string motd1 = null, motd2 = null;
-                if (ServerStatus.motd.html[0] != null) motd1 = ServerStatus.motd.html[0];
-                if (ServerStatus.motd.html[1] != null) motd2 = ServerStatus.motd.html[1];
-                webBrowser_ServerStatus_ServerMotd.DocumentText = "<div>" + motd1 + motd2 + "</div>" + "<style>div{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>";
+                webBrowser_ServerStatus_ServerMotd.DocumentText = AddtionUrl == "3/" //Is it java?(i know its stupid but it works)
+                    ? "<div>" + ServerStatus.motd.html[0] + ServerStatus.motd.html[1] + "</div>" + "<style>div{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>" //is java.
+                    : "<div>" + ServerStatus.motd.html[0] + "</div>" + "<style>div{style:\"font-family:Microsoft Yahei;font-size: 10px;\"}</style>"; //is not java(is Bedrock).
                 //Actually these CSS doesn't work really. But its really a long time from i last write html5.
                 //TODO: make these html work again.
                 label_ServerStatus_ServerCore.Text = ServerStatus.software;
