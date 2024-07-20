@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 
-namespace MinecraftUsefulApiTools
+namespace MinecraftUsefulLookupTools
 {
     internal class PlayerInfoJsonParser
     {

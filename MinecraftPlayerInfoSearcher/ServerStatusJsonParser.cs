@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 
-namespace MinecraftUsefulApiTools
+namespace MinecraftUsefulLookupTools
 {
     internal class ServerStatusJsonParser
     {

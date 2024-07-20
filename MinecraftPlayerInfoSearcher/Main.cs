@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MinecraftUsefulApiTools
+namespace MinecraftUsefulLookupTools
 {
     internal static class Lookuper
     {

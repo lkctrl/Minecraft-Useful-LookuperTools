@@ -1,4 +1,4 @@
-﻿namespace MinecraftUsefulApiTools
+﻿namespace MinecraftUsefulLookupTools
 {
     partial class LookuperUI
     {
@@ -276,7 +276,7 @@
             // pictureBox_PlayerInfo_PlayerHead
             // 
             this.pictureBox_PlayerInfo_PlayerHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_PlayerInfo_PlayerHead.Image = global::MinecraftPlayerInfoSearcher.Properties.Resources._Old_Steve_head_shock;
+            this.pictureBox_PlayerInfo_PlayerHead.Image = global::MinecraftUsefulLookupTools.Properties.Resources._Old_Steve_head_shock;
             this.pictureBox_PlayerInfo_PlayerHead.Location = new System.Drawing.Point(6, 22);
             this.pictureBox_PlayerInfo_PlayerHead.Name = "pictureBox_PlayerInfo_PlayerHead";
             this.pictureBox_PlayerInfo_PlayerHead.Size = new System.Drawing.Size(32, 32);
