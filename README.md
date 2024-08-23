@@ -1,10 +1,12 @@
 # Minecraft-Useful-LookuperTools
 
-A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape)on MojangApi
+A C# program using WindowsForm to lookup player's profile(Name/UUID/Skin/Cape) on MojavgApi
+and server's status(java/bedrock) on mcsrvstatApi
 
 [![Issues][issues-shield]][issues-url]
 [![MPL License][license-shield]][license-url]
 
+## Using
 ### Requirement
 
 1. Windows
