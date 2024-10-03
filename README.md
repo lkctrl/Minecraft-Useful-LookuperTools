@@ -17,10 +17,6 @@ and server's status(java/bedrock) on mcsrvstatApi
 
 1. Fody.Costuna(Costuna)
 
-### Version control
-
-The project uses Git for version management. You can view currently available versions in repository.
-
 ### Author
 
 lkctrl@foxmail.com
